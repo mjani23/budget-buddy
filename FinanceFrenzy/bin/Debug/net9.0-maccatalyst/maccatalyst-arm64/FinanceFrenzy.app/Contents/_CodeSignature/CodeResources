@@ -16,6 +16,10 @@
 		<data>
 		a4931LwQWyxJVaXHNKKnIVb5aLM=
 		</data>
+		<key>Resources/MauiInfo.plist</key>
+		<data>
+		4jZ/pOJGXwmAFXCgk7LRa9BJH58=
+		</data>
 		<key>Resources/MonoTouchDebugConfiguration.txt</key>
 		<data>
 		oowkf1sL6T19nanXUObgmuayWqM=
@@ -51,14 +55,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YHwUzRV8KFlY8TqO9gS7oQHI7NaIU/7fwvR0QWSxzhU=
+			GYbmEAYdv0z27BbOojCMLJA5T1yMUedreZhWCDXiIbA=
 			</data>
 		</dict>
 		<key>MonoBundle/FinanceFrenzy.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IbvwpK7kcSn+s03SGf2Mea5y7/7dYkvMuF2wOt6VUNQ=
+			VC8qQ/ENXcOyYJVNl6baNr8DGCYMCxNVfprcarY/K0w=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.CSharp.dll</key>
@@ -1662,6 +1666,13 @@
 			<key>hash2</key>
 			<data>
 			tHXIdQgmdh0ic/kPFTzldeIcUsxkJWK7CK5Af9xgNWM=
+			</data>
+		</dict>
+		<key>Resources/MauiInfo.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			D7xF2d/FAU0oXTW+VlzYG1hotU4XDYbby3Tmkh09oro=
 			</data>
 		</dict>
 		<key>Resources/MonoTouchDebugConfiguration.txt</key>
