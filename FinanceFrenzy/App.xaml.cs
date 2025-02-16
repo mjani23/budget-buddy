@@ -1,14 +1,15 @@
 ﻿namespace FinanceFrenzy;
+using FinanceFrenzy.Models;
 
 public partial class App : Application
 {
 	public App()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+        DatabaseHelper.InitializeDatabase(); // Make sure the database is initialized
+        MainPage = new AppShell(); // Use AppShell to manage navigation
+    }
 
-	protected override Window CreateWindow(IActivationState? activationState)
-	{
-		return new Window(new AppShell());
-	}
+    
+
 }
