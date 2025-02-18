@@ -3,10 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FinanceFrenzy.Views.TakeHomePayPage"
              Title="TakeHomePayPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+        <StackLayout Padding="20">
+            <Label Text="Select Your State" FontSize="18"/>
+            <Picker x:Name="StatePicker">
+                <Picker.Items>
+                    <x:String>Maryland</x:String>
+                    <x:String>Virginia</x:String>
+                    <x:String>District of Columbia</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Select Filing Status" FontSize="18"/>
+                <Picker x:Name="FilingStatusPicker">
+                    <Picker.Items>
+                        <x:String>Single</x:String>
+                        <x:String>Married</x:String>
+                    </Picker.Items>
+                </Picker>
+
+            <Label Text="Your Income" FontSize="18"/>
+            <Label x:Name="IncomeLabel" FontSize="18" FontAttributes="Bold"/>
+            <Button Text="Calculate Take-Home Pay" x:Name="CalcuateButton" Clicked="CalcuateButton_Clicked1"/>
+
+            <Label Text="Your Take-Home Pay" FontSize="18"/>
+            <Label x:Name="TakeHomeLabel" FontSize="18" FontAttributes="Bold"/>
+
+
+
+        </StackLayout>
+
 </ContentPage>

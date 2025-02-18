@@ -13,29 +13,39 @@
 
     
     <Shell.FlyoutHeader>
-        <StackLayout Padding="0,20,0,0"> 
-            <Label Text="Navigation Menu" Margin="10" FontSize="24" />
+        <StackLayout Padding="10" HorizontalOptions="Center">
+            <Image Source="logo.png" HeightRequest="80" Aspect="AspectFit"/>
         </StackLayout>
     </Shell.FlyoutHeader>
 
     <FlyoutItem Title="Dashboard" FlyoutIcon="dashboard_icon.png">
         <ShellContent Route="dashboard" ContentTemplate="{DataTemplate views:DashboardPage}" />
     </FlyoutItem>
+
     <FlyoutItem Title="Income" FlyoutIcon="income_icon.png">
         <ShellContent Route="income" ContentTemplate="{DataTemplate views:IncomePage}" />
     </FlyoutItem>
+
+    <FlyoutItem Title="Take Home Pay" FlyoutIcon="home_pay.png" >
+        <ShellContent Route="takehomepay" ContentTemplate="{DataTemplate views:TakeHomePayPage}" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Expenses" FlyoutIcon="expenses.png">
         <ShellContent Route="expenses" ContentTemplate="{DataTemplate views:ExpensesPage}" />
     </FlyoutItem>
+
     <FlyoutItem Title="Budget" FlyoutIcon="budget.png">
         <ShellContent Route="budget" ContentTemplate="{DataTemplate views:BudgetPage}" />
     </FlyoutItem>
+
     <FlyoutItem Title="Savings" FlyoutIcon="savings.png">
         <ShellContent Route="savings" ContentTemplate="{DataTemplate views:SavingsPage}" />
     </FlyoutItem>
+
     <FlyoutItem Title="Reports" FlyoutIcon="reports.png">
         <ShellContent Route="reports" ContentTemplate="{DataTemplate views:ReportsPage}" />
     </FlyoutItem>
+
     <FlyoutItem Title="Tax" FlyoutIcon="tax.png">
         <ShellContent Route="tax" ContentTemplate="{DataTemplate views:TaxPage}" />
     </FlyoutItem>

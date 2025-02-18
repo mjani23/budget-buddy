@@ -1,51 +1,37 @@
 using Microsoft.Maui.Controls;
 using System.Globalization;
 using FinanceFrenzy.Models;
+
 namespace FinanceFrenzy.Views;
 
 public partial class IncomePage : ContentPage
 {
-	public IncomePage()
-	{
-		InitializeComponent();
-		LoadIncome();
+    public IncomePage()
+    {
+        InitializeComponent();
+        LoadIncome();
+    }
 
-	}
-	private void LoadIncome()
-        {
-            string savedIncome = DatabaseHelper.LoadIncomeData(); 
+    private void LoadIncome()
+    {
+        double savedIncome = DatabaseHelper.LoadIncomeData();  // Load as double
 
-            if (double.TryParse(savedIncome, out double incomeAmount))
-            {
-				incomeLabel.Text = $"Current Income: {incomeAmount.ToString("C", new CultureInfo("en-US"))}";
-            }
-            else
-            {
-                incomeLabel.Text = "Current Income: $0.00"; 
-            }
-        }
+        incomeLabel.Text = $"Current Income: {savedIncome.ToString("C", new CultureInfo("en-US"))}";
+    }
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
-        string newIncome = await DisplayPromptAsync("Update Income", "Enter your new income:", 
-            initialValue: DatabaseHelper.LoadIncomeData(), keyboard: Keyboard.Numeric);
+        string newIncomeString = await DisplayPromptAsync("Update Income", "Enter your new income:", 
+            initialValue: DatabaseHelper.LoadIncomeData().ToString(), keyboard: Keyboard.Numeric);
 
-            if (IsNumeric(newIncome))
-            {
-                DatabaseHelper.SaveIncomeData(newIncome);  // Save new income
-                LoadIncome();  
-            }
-            else
-            {
-                await DisplayAlert("Invalid Input", "Please enter a valid numeric income.", "OK");
-            }
-    }
-	
-	private bool IsNumeric(string input)
+        if (double.TryParse(newIncomeString, NumberStyles.Currency, CultureInfo.InvariantCulture, out double newIncome))
         {
-            return decimal.TryParse(input, NumberStyles.Currency, CultureInfo.InvariantCulture, out _);
-
+            DatabaseHelper.SaveIncomeData(newIncome);  // Save as double
+            LoadIncome();  // Refresh display
         }
-    
-	
+        else
+        {
+            await DisplayAlert("Invalid Input", "Please enter a valid numeric income.", "OK");
+        }
+    }
 }

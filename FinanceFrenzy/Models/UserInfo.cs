@@ -6,10 +6,11 @@ namespace FinanceFrenzy.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Income { get; set; }
+        public double Income { get; set; }
         public string State { get; set; }
         public string FilingStatus { get; set; }
-        public double FederalTaxRate { get; set; }
-        public double StateTaxRate { get; set; }
+        public double TakeHomePay { get; set; }
+        
+
     }
 }
