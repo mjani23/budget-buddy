@@ -11,14 +11,17 @@ namespace FinanceFrenzy.Models
         //this function creates and initializes the database
         public static void InitializeDatabase()
         {
+
             using (var db = new SQLiteConnection(dbPath))
             {
                 db.CreateTable<UserInfo>();
                 db.CreateTable<BudgetCategory>();
-                Console.WriteLine("------------------");
-                Console.WriteLine($"Database Path: {dbPath}");
+
+                // Print database path for debugging
+                Console.WriteLine($"🔍 DATABASE PATH: {dbPath}");
             }
         }
+
 
         //adds a new budget category to the database or updates it if it already exists
         public static void SaveBudgetCategory(BudgetCategory category)
