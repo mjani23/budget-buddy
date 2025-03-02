@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		ztsTuercZRxAMEtZORbxGIE8xvA=
+		ASZadqtqVl3qjeINWA3Mt/vijeo=
 		</data>
 		<key>Resources/FluentUI.cs</key>
 		<data>
@@ -34,7 +34,15 @@
 		</data>
 		<key>Resources/appicon.icns</key>
 		<data>
-		tq+BnZMCqu3BJmxd0LKDYjr+z/0=
+		Kd8ViqJeEuSZtKidMjFTlxRjATs=
+		</data>
+		<key>Resources/budget.png</key>
+		<data>
+		kVMAwSjT+uAXQsqIzIyeie84Gtw=
+		</data>
+		<key>Resources/dashboard_icon.png</key>
+		<data>
+		M7RSptOAlosZCVG3hVrnMMHCp8k=
 		</data>
 		<key>Resources/dotnet_bot.png</key>
 		<data>
@@ -48,6 +56,38 @@
 		<data>
 		2Ikgd4MekBz4KDFadcRsOaz6Qws=
 		</data>
+		<key>Resources/expenses.png</key>
+		<data>
+		4/IJRiXD7YKUJuUmsnRvzrLKJEI=
+		</data>
+		<key>Resources/home_pay.png</key>
+		<data>
+		JaNOlOrvlQahGo2cpaCjvMpwQJc=
+		</data>
+		<key>Resources/income_icon.png</key>
+		<data>
+		QEJAdzhvKVKvlcRTzLj8n6yWc4c=
+		</data>
+		<key>Resources/logo.png</key>
+		<data>
+		NQZDHqo9td8vXhYkjB1KaA2vW5M=
+		</data>
+		<key>Resources/reports.png</key>
+		<data>
+		+BflcH/HTZyrxijloeo2WMCRVCs=
+		</data>
+		<key>Resources/savings.png</key>
+		<data>
+		4RQucoCt9/pnKQqTdyfbgQWn1wk=
+		</data>
+		<key>Resources/take_home_pay_icon.png</key>
+		<data>
+		atZJiUrEH1NM9AZqZuVrfxMO8rc=
+		</data>
+		<key>Resources/tax.png</key>
+		<data>
+		qX2yDeuEju6tjG5Tjs0C1cKHwfE=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -55,14 +95,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GYbmEAYdv0z27BbOojCMLJA5T1yMUedreZhWCDXiIbA=
+			igISGRHiAbNar9GH//yglCSQQMCd5flwt7G+25gtx/w=
 			</data>
 		</dict>
 		<key>MonoBundle/FinanceFrenzy.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VC8qQ/ENXcOyYJVNl6baNr8DGCYMCxNVfprcarY/K0w=
+			hw9vSAmp655RY6m0vcwKG4+Yyp16PPUPlnBZkCOx8UY=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.CSharp.dll</key>
@@ -238,6 +278,34 @@
 			<key>hash2</key>
 			<data>
 			OS+L5SYF3MkLYy62+uHjG82hOe8kZY8Cjd4fLjVOgrU=
+			</data>
+		</dict>
+		<key>MonoBundle/SQLite-net.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/0h0FMSssyqe6OCqk97walP3tX35PS56JgVOGN+Fcj4=
+			</data>
+		</dict>
+		<key>MonoBundle/SQLitePCLRaw.batteries_v2.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kylPuIiR6IKN27UfH1K8VCl9n9pSQbikaTX+p10gtqM=
+			</data>
+		</dict>
+		<key>MonoBundle/SQLitePCLRaw.core.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			l57cyQVqwG1fUrEtm3czsSF5FKtQvxI6sxLgJ+esV6U=
+			</data>
+		</dict>
+		<key>MonoBundle/SQLitePCLRaw.provider.e_sqlite3.dll</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RwA/P9Qppbadb8bP0Wv82XkQMhcB5eeoiQYWQ8gdCGU=
 			</data>
 		</dict>
 		<key>MonoBundle/System.AppContext.dll</key>
@@ -1507,6 +1575,13 @@
 			GaWTyBFlsfhIsKrcmlnWSR4dz74Tlef+s6l8LakNpRc=
 			</data>
 		</dict>
+		<key>MonoBundle/libe_sqlite3.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7GQGChwosN+onzu5oGGCfWSy3x1WdZdMrAyaaafyvnI=
+			</data>
+		</dict>
 		<key>MonoBundle/ms/Microsoft.Maui.Controls.resources.dll</key>
 		<dict>
 			<key>hash2</key>
@@ -1658,7 +1733,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8xslDBfcVpwLkgHZs3QxZXFEsd9WaNymmD5XNKW7cmw=
+			gE0gOrwywSPUrVb6oAcI0FmDmNUeLoTAB7EBrqqS3is=
 			</data>
 		</dict>
 		<key>Resources/FluentUI.cs</key>
@@ -1700,7 +1775,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Yl5mOkHNyEJ0mH+ri9p6ntzRWZ6wBuP8lyUmgmIYaLY=
+			Veg4CnUEiEuYrE5tJVjrl90MbwC/Ng7mCYLUJ5LrYec=
+			</data>
+		</dict>
+		<key>Resources/budget.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			M6XUrRxF4erAWueGCUYdtuuYrrS1gmWswigpPNPCNvk=
+			</data>
+		</dict>
+		<key>Resources/dashboard_icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ODz4Nol2HuIIFmOTgtY/+EGPZBx6L0AU8H4xiQOVTiA=
 			</data>
 		</dict>
 		<key>Resources/dotnet_bot.png</key>
@@ -1722,6 +1811,62 @@
 			<key>hash2</key>
 			<data>
 			xjB46IJZchU4aUkPUeVRhWJViqBU1K6H3B/8RQ1fB7M=
+			</data>
+		</dict>
+		<key>Resources/expenses.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RUN4WEbxPsiAa60DTKuAnqfnjQzyhSo/KdzxM7W2640=
+			</data>
+		</dict>
+		<key>Resources/home_pay.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6vJtV/bEgz9ndRxtL6QVNnnKqqY7FzFMqH4FG0oXqeA=
+			</data>
+		</dict>
+		<key>Resources/income_icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yoWZI83fSk6oc6EozzV1a59jT4xnyOEyqInYVgSA5T4=
+			</data>
+		</dict>
+		<key>Resources/logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Gypx/l1zDuqPvPdiuWYO8JBcnE/wB3341nCRQ4KKom0=
+			</data>
+		</dict>
+		<key>Resources/reports.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mdVByWJwjshsTQuSP5GJvg9zn9Q47SAFqLK0OlyoabQ=
+			</data>
+		</dict>
+		<key>Resources/savings.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			x9Zh/lJwCAUimUcoJ4I/CxQHbrSOxvrRbuS5OI2yMEo=
+			</data>
+		</dict>
+		<key>Resources/take_home_pay_icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			85NHbrKEDL73u6wEJVaTsp6cwDhmHcxAr6TeMRUYYAc=
+			</data>
+		</dict>
+		<key>Resources/tax.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HyCVi+L+2spcDMDCIvZdF48N1Wd7Ldj7dnY9wUsYX18=
 			</data>
 		</dict>
 	</dict>

@@ -12,7 +12,7 @@
       <CodesignDisableTimestamp>true</CodesignDisableTimestamp>
       <CodesignKeychain></CodesignKeychain>
       <CodesignUseHardenedRuntime></CodesignUseHardenedRuntime>
-      <SourceProjectPath>/Users/michael/Desktop/GUI/FinanceFrenzy</SourceProjectPath>
+      <SourceProjectPath>/Users/michael/Desktop/semester-project-budgetbuddy/FinanceFrenzy</SourceProjectPath>
     </_CodesignBundle>
   </ItemGroup>
 </Project>

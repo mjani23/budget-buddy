@@ -3,7 +3,7 @@
   <ItemGroup>
     <_CodesignBundle Include="FinanceFrenzy.app">
       <CodesignSigningKey>-</CodesignSigningKey>
-      <CodesignEntitlements>/Users/michael/Desktop/GUI/FinanceFrenzy/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/Entitlements.xcent</CodesignEntitlements>
+      <CodesignEntitlements>/Users/michael/Desktop/semester-project-budgetbuddy/FinanceFrenzy/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/Entitlements.xcent</CodesignEntitlements>
       <CodesignUseSecureTimestamp></CodesignUseSecureTimestamp>
       <CodesignAllocate>/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate</CodesignAllocate>
       <RequireCodeSigning>false</RequireCodeSigning>
@@ -12,7 +12,7 @@
       <CodesignDisableTimestamp>true</CodesignDisableTimestamp>
       <CodesignKeychain></CodesignKeychain>
       <CodesignUseHardenedRuntime></CodesignUseHardenedRuntime>
-      <SourceProjectPath>/Users/michael/Desktop/GUI/FinanceFrenzy</SourceProjectPath>
+      <SourceProjectPath>/Users/michael/Desktop/semester-project-budgetbuddy/FinanceFrenzy</SourceProjectPath>
     </_CodesignBundle>
   </ItemGroup>
 </Project>
