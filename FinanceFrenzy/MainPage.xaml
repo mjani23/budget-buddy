@@ -1,0 +1,20 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanceFrenzy.MainPage">
+    <VerticalStackLayout
+        Spacing="25"
+        Padding="30"
+        VerticalOptions="Center"
+        HorizontalOptions="FillAndExpand">
+        <Label 
+            Text="Welcome to BudgetU!"
+            HorizontalOptions="Center"
+            FontSize="24"/>
+        <Button 
+            Text="Manage Expenses"
+            HorizontalOptions="Center"/>
+        <Button 
+            Text="Track Income"
+            HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

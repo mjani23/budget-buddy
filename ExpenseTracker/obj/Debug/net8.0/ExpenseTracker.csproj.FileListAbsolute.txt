@@ -1,0 +1,14 @@
+/Users/michael/Desktop/Code/C#/ExpenseTracker/bin/Debug/net8.0/ExpenseTracker
+/Users/michael/Desktop/Code/C#/ExpenseTracker/bin/Debug/net8.0/ExpenseTracker.deps.json
+/Users/michael/Desktop/Code/C#/ExpenseTracker/bin/Debug/net8.0/ExpenseTracker.runtimeconfig.json
+/Users/michael/Desktop/Code/C#/ExpenseTracker/bin/Debug/net8.0/ExpenseTracker.dll
+/Users/michael/Desktop/Code/C#/ExpenseTracker/bin/Debug/net8.0/ExpenseTracker.pdb
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/ExpenseTracker.GeneratedMSBuildEditorConfig.editorconfig
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/ExpenseTracker.AssemblyInfoInputs.cache
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/ExpenseTracker.AssemblyInfo.cs
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/ExpenseTracker.csproj.CoreCompileInputs.cache
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/ExpenseTracker.dll
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/refint/ExpenseTracker.dll
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/ExpenseTracker.pdb
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/ExpenseTracker.genruntimeconfig.cache
+/Users/michael/Desktop/Code/C#/ExpenseTracker/obj/Debug/net8.0/ref/ExpenseTracker.dll
