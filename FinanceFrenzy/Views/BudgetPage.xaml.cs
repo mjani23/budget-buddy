@@ -66,15 +66,29 @@ public partial class BudgetPage : ContentPage
         BudgetAmountEntry.Text = string.Empty;
     }
 
-    //this deletes a budget category from the listview and database
+    private void LoadBudgetCategories()
+    {
+        BudgetCategories.Clear();
+        foreach (var category in DatabaseHelper.LoadBudgetCategories())
+        {
+            category.CanBeDeleted = category.Category != "Miscellaneous"; 
+            BudgetCategories.Add(category);
+        }
+    }
+
     private void DeleteClicked(object sender, EventArgs e)
     {
         var menuItem = sender as MenuItem;
-        if (menuItem?.CommandParameter is BudgetCategory category)
+        if (menuItem?.CommandParameter is BudgetCategory category && category.CanBeDeleted)
         {
-            DatabaseHelper.DeleteBudgetCategory(category); 
-            BudgetCategories.Remove(category);
+            DatabaseHelper.DeleteBudgetCategory(category);
+            LoadBudgetCategories();
+        }
+        else
+        {
+            DisplayAlert("Error", "You cannot delete the 'Miscellaneous' category.", "OK");
         }
     }
+
 
 }

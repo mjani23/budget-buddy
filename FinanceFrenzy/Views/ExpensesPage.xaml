@@ -2,18 +2,83 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FinanceFrenzy.Views.ExpensesPage"
-             Title="ExpensesPage">
-    <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
-        <Label 
-            Text="Expenses Page" 
-            HorizontalOptions="Center" 
-            />
-        <Button 
-            Text="Dashboard" 
-            HorizontalOptions="Center" 
-            x:Name="btnGoBack"
-            Clicked="btnGoBack_Clicked"
-            />
-            
-    </VerticalStackLayout>
+             Title="Expenses">
+
+    <Grid Padding="10"
+          RowDefinitions="Auto, Auto, *, Auto"
+          ColumnDefinitions="*">
+
+        <!-- Income Display -->
+        <StackLayout Grid.Row="0">
+            <Label x:Name="IncomeLabel" FontSize="18" FontAttributes="Bold"/>
+            <Label Text="Your Monthly Pay (Estimated)" FontSize="18"/>
+            <Label x:Name="MonthlyPayLabel" FontSize="18" FontAttributes="Bold"/>
+        </StackLayout>
+
+        <!-- Expense Entry Fields -->
+        <StackLayout Grid.Row="1" Spacing="5">
+            <Label Text="Select an Expense Category:" FontSize="18"/>
+            <Picker x:Name="CategoryPicker" Title="Select a category"/>
+
+            <Label Text="Expense Amount:" FontSize="18"/>
+            <Entry x:Name="ExpenseAmountEntry" Placeholder="Enter amount" Keyboard="Numeric"/>
+
+            <Label Text="Optional Tag:" FontSize="18"/>
+            <Entry x:Name="ExpenseTagEntry" Placeholder="Enter tag (optional)"/>
+
+            <Button Text="Add Expense" x:Name="expenseAdd" Clicked="expenseAdd_Clicked" BackgroundColor="Purple" TextColor="White"/>
+        </StackLayout>
+
+        <!-- Expenses Grouped By Category -->
+        <ListView x:Name="ExpensesListView"
+                  Grid.Row="2"
+                  BackgroundColor="Transparent"
+                  IsGroupingEnabled="True"
+                  GroupDisplayBinding="{Binding Category}"
+                  SeparatorVisibility="None">
+
+            <!-- Category Header (Total + Remaining Budget) -->
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10, 5" BackgroundColor="#F5F5F5" Orientation="Horizontal" Spacing="10">
+                            <Label Text="{Binding Category}" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="{Binding TotalAmount, StringFormat='(Total: ${0:N2})'}"
+                                   FontSize="16"
+                                   TextColor="Green"/>
+                            <Label Text="{Binding RemainingBudget, StringFormat='(Remaining: ${0:N2})'}"
+                                   FontSize="16"
+                                   TextColor="Red"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+
+            <!-- Expense Item -->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal" Spacing="10">
+                            <!-- Expense Amount -->
+                            <Label Text="{Binding Amount, StringFormat='${0:N2}'}" FontSize="16" FontAttributes="Bold"/>
+
+                            <!-- Separator (Only if tag exists) -->
+                            <Label Text=" - " FontSize="16" TextColor="Gray" IsVisible="{Binding HasTag}"/>
+
+                            <!-- Tag (if exists) -->
+                            <Label Text="{Binding Tag}" FontSize="14" TextColor="#808080" FontAttributes="Italic" IsVisible="{Binding HasTag}"/>
+                        </StackLayout>
+
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Delete"
+                                      Clicked="DeleteExpense_Clicked"
+                                      IsDestructive="True"
+                                      CommandParameter="{Binding .}"/>
+                        </ViewCell.ContextActions>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </Grid>
 </ContentPage>

@@ -11,16 +11,65 @@ namespace FinanceFrenzy.Models
         //this function creates and initializes the database
         public static void InitializeDatabase()
         {
-
             using (var db = new SQLiteConnection(dbPath))
             {
                 db.CreateTable<UserInfo>();
                 db.CreateTable<BudgetCategory>();
+                db.CreateTable<Expense>();
 
-                // Print database path for debugging
-                Console.WriteLine($"🔍 DATABASE PATH: {dbPath}");
+                // Ensure "Miscellaneous" category exists
+                var miscCategory = db.Table<BudgetCategory>().FirstOrDefault(c => c.Category == "Miscellaneous");
+                if (miscCategory == null)
+                {
+                    db.Insert(new BudgetCategory { Category = "Miscellaneous", Amount = 100.0, CanBeDeleted = false });
+                }
             }
         }
+
+
+        //save an expense into the database
+        public static void SaveExpense(Expense expense)
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.Insert(expense);
+            }
+        }
+
+        //load an expense into the database
+        public static List<Expense> LoadExpenses()
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.CreateTable<Expense>();
+                return db.Table<Expense>().ToList();
+            }
+        }
+
+
+        //delete an expense from the database
+        public static void DeleteExpense(Expense expense)
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.Delete(expense);
+            }
+
+            // If no more expenses exist for the category, remove it from BudgetCategory
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                bool categoryExists = db.Table<Expense>().Any(e => e.Category == expense.Category);
+                if (!categoryExists)
+                {
+                    var categoryToDelete = db.Table<BudgetCategory>().FirstOrDefault(c => c.Category == expense.Category);
+                    if (categoryToDelete != null)
+                    {
+                        db.Delete(categoryToDelete);
+                    }
+                }
+            }
+        }
+
 
 
         //adds a new budget category to the database or updates it if it already exists

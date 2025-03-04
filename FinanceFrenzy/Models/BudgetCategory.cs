@@ -8,5 +8,6 @@ namespace FinanceFrenzy.Models
         public int Id { get; set; }
         public string Category { get; set; }
         public double Amount { get; set; }
+        public bool CanBeDeleted { get; set; } = true; 
     }
 }
