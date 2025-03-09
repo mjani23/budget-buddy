@@ -5,6 +5,9 @@
   <key>UIAppFonts</key>
   <array>
 	<string>FluentUI.cs</string>
+	<string>LexendDeca-VariableFont_wght.ttf</string>
+	<string>MauiInfo.plist</string>
+	<string>NovaSquare-Regular.ttf</string>
 	<string>OpenSans-Regular.ttf</string>
 	<string>OpenSans-Semibold.ttf</string>
   </array>

@@ -21,7 +21,7 @@
             <Entry x:Name="CategoryEntry" Placeholder="Enter category name"/>
             <Label Text="Set Budget Amount" FontSize="18"/>
             <Entry x:Name="BudgetAmountEntry" Placeholder="Enter amount" Keyboard="Numeric"/>
-            <Button Text="Add Category" Clicked="AddCategoryButton_Clicked" BackgroundColor="Purple" TextColor="White"/>
+            <Button Text="Add Category" Clicked="AddCategoryButton_Clicked" TextColor="White"/>
         </StackLayout>
 
         <!-- Budget Categories List -->

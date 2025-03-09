@@ -24,7 +24,7 @@ public class ExpenseGroup : ObservableCollection<Expense>
 public partial class ExpensesPage : ContentPage
 {
     private ObservableCollection<ExpenseGroup> ExpensesGrouped = new();
-    private List<string> ExistingCategories = new();
+    private List<string?> ExistingCategories = new();
 
     public ExpensesPage()
     {
@@ -78,31 +78,40 @@ public partial class ExpensesPage : ContentPage
         ExpensesListView.ItemsSource = ExpensesGrouped;
     }
 
-    private void expenseAdd_Clicked(object sender, EventArgs e)
+private void expenseAdd_Clicked(object sender, EventArgs e)
+{
+    if (CategoryPicker.SelectedItem == null)
     {
-        if (CategoryPicker.SelectedItem == null)
-        {
-            DisplayAlert("Error", "Please select a category.", "OK");
-            return;
-        }
-
-        string categoryToUse = CategoryPicker.SelectedItem.ToString();
-        string expenseAmountText = ExpenseAmountEntry.Text;
-        string tag = ExpenseTagEntry.Text;
-
-        if (!double.TryParse(expenseAmountText, out double expenseAmount))
-        {
-            DisplayAlert("Error", "Please enter a valid numeric amount.", "OK");
-            return;
-        }
-
-        var newExpense = new Expense { Category = categoryToUse, Amount = expenseAmount, Tag = tag };
-        DatabaseHelper.SaveExpense(newExpense);
-
-        LoadExpenses();
-        ExpenseAmountEntry.Text = string.Empty;
-        ExpenseTagEntry.Text = string.Empty;
+        DisplayAlert("Error", "Please select a category.", "OK");
+        return;
     }
+
+    string? categoryToUse = CategoryPicker.SelectedItem.ToString();
+    string expenseAmountText = ExpenseAmountEntry.Text;
+    string tag = ExpenseTagEntry.Text;
+    DateTime selectedDate = ExpenseDatePicker.Date;
+
+    if (!double.TryParse(expenseAmountText, out double expenseAmount))
+    {
+        DisplayAlert("Error", "Please enter a valid numeric amount.", "OK");
+        return;
+    }
+
+    var newExpense = new Expense 
+    { 
+        Category = categoryToUse, 
+        Amount = expenseAmount, 
+        Tag = tag,
+        Date = selectedDate
+    };
+
+    DatabaseHelper.SaveExpense(newExpense);
+    LoadExpenses();
+
+    ExpenseAmountEntry.Text = string.Empty;
+    ExpenseTagEntry.Text = string.Empty;
+}
+
 
     private void DeleteExpense_Clicked(object sender, EventArgs e)
     {

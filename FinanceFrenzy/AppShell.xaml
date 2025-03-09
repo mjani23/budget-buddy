@@ -6,7 +6,7 @@
     xmlns:views="clr-namespace:FinanceFrenzy.Views"
     Shell.FlyoutBehavior="Flyout"    
     Title="FinanceFrenzy"
-    FlyoutBackgroundColor="#FFACCBE9"
+    FlyoutBackgroundColor="{StaticResource PrimaryColor}"
     FlyoutWidth="250"
     >
     
@@ -14,7 +14,7 @@
     
     <Shell.FlyoutHeader>
         <StackLayout Padding="10" HorizontalOptions="Center">
-            <Image Source="logo.png" HeightRequest="80" Aspect="AspectFit"/>
+            <Image Source="alt_logo.png" HeightRequest="80" Aspect="AspectFit"/>
         </StackLayout>
     </Shell.FlyoutHeader>
 

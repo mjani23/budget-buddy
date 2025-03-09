@@ -7,8 +7,8 @@ namespace FinanceFrenzy.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public double Income { get; set; }
-        public string State { get; set; }
-        public string FilingStatus { get; set; }
+        public string? State { get; set; }
+        public string? FilingStatus { get; set; }
         public double TakeHomePay { get; set; }
         
 

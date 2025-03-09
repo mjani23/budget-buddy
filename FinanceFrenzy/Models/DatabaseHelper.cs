@@ -32,6 +32,7 @@ namespace FinanceFrenzy.Models
         {
             using (var db = new SQLiteConnection(dbPath))
             {
+                db.CreateTable<Expense>();
                 db.Insert(expense);
             }
         }
@@ -42,31 +43,22 @@ namespace FinanceFrenzy.Models
             using (var db = new SQLiteConnection(dbPath))
             {
                 db.CreateTable<Expense>();
-                return db.Table<Expense>().ToList();
+
+                return db.Table<Expense>()
+                        .OrderByDescending(e => e.Date) // Show recent expenses first
+                        .ToList();
             }
         }
 
 
+
         //delete an expense from the database
+        // Delete an expense without removing the budget category
         public static void DeleteExpense(Expense expense)
         {
             using (var db = new SQLiteConnection(dbPath))
             {
                 db.Delete(expense);
-            }
-
-            // If no more expenses exist for the category, remove it from BudgetCategory
-            using (var db = new SQLiteConnection(dbPath))
-            {
-                bool categoryExists = db.Table<Expense>().Any(e => e.Category == expense.Category);
-                if (!categoryExists)
-                {
-                    var categoryToDelete = db.Table<BudgetCategory>().FirstOrDefault(c => c.Category == expense.Category);
-                    if (categoryToDelete != null)
-                    {
-                        db.Delete(categoryToDelete);
-                    }
-                }
             }
         }
 

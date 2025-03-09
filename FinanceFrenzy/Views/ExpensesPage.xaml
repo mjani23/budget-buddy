@@ -18,21 +18,25 @@
         <!-- Expense Entry Fields -->
         <StackLayout Grid.Row="1" Spacing="5">
             <Label Text="Select an Expense Category:" FontSize="18"/>
-            <Picker x:Name="CategoryPicker" Title="Select a category"/>
+            <Picker x:Name="CategoryPicker" Title="Select a category" TextColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
 
             <Label Text="Expense Amount:" FontSize="18"/>
-            <Entry x:Name="ExpenseAmountEntry" Placeholder="Enter amount" Keyboard="Numeric"/>
+            <Entry x:Name="ExpenseAmountEntry" Placeholder="Enter amount" Keyboard="Numeric" PlaceholderColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
 
             <Label Text="Optional Tag:" FontSize="18"/>
-            <Entry x:Name="ExpenseTagEntry" Placeholder="Enter tag (optional)"/>
+            <Entry x:Name="ExpenseTagEntry" Placeholder="Enter tag (optional)" PlaceholderColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
 
-            <Button Text="Add Expense" x:Name="expenseAdd" Clicked="expenseAdd_Clicked" BackgroundColor="Purple" TextColor="White"/>
+            <Label Text="Select Expense Date:" FontSize="18"/>
+            <DatePicker x:Name="ExpenseDatePicker" Format="MMMM dd, yyyy" TextColor="{StaticResource Gray200}"/>
+
+            <Button Text="Add Expense" x:Name="expenseAdd" Clicked="expenseAdd_Clicked" TextColor="{StaticResource Gray200}"/>
         </StackLayout>
 
         <!-- Expenses Grouped By Category -->
         <ListView x:Name="ExpensesListView"
                   Grid.Row="2"
                   BackgroundColor="Transparent"
+                  Margin="0,10,0,0"
                   IsGroupingEnabled="True"
                   GroupDisplayBinding="{Binding Category}"
                   SeparatorVisibility="None">
@@ -41,8 +45,8 @@
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10, 5" BackgroundColor="#F5F5F5" Orientation="Horizontal" Spacing="10">
-                            <Label Text="{Binding Category}" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                        <StackLayout Padding="4, 2" BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}" Orientation="Horizontal" Spacing="10">
+                            <Label Text="{Binding Category}" FontSize="20" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}"/>
                             <Label Text="{Binding TotalAmount, StringFormat='(Total: ${0:N2})'}"
                                    FontSize="16"
                                    TextColor="Green"/>
@@ -58,15 +62,18 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10" Orientation="Horizontal" Spacing="10">
+                        <StackLayout Padding="10" Orientation="Horizontal" Spacing="10" Background="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
                             <!-- Expense Amount -->
                             <Label Text="{Binding Amount, StringFormat='${0:N2}'}" FontSize="16" FontAttributes="Bold"/>
 
+                            <!-- Expense Date -->
+                            <Label Text="{Binding Date, StringFormat='({0:MMMM dd, yyyy})'}" FontSize="14" TextColor="{StaticResource Gray500}"/>
+
                             <!-- Separator (Only if tag exists) -->
-                            <Label Text=" - " FontSize="16" TextColor="Gray" IsVisible="{Binding HasTag}"/>
+                            <Label Text=" - " FontSize="16" TextColor="{StaticResource Gray500}" IsVisible="{Binding HasTag}"/>
 
                             <!-- Tag (if exists) -->
-                            <Label Text="{Binding Tag}" FontSize="14" TextColor="#808080" FontAttributes="Italic" IsVisible="{Binding HasTag}"/>
+                            <Label Text="{Binding Tag}" FontSize="14" TextColor="{StaticResource Gray500}" FontAttributes="Italic" IsVisible="{Binding HasTag}"/>
                         </StackLayout>
 
                         <ViewCell.ContextActions>

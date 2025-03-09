@@ -8,6 +8,6 @@ namespace FinanceFrenzy.Models
         public int Id { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
-        public string Data { get; set; } 
+        public string? Data { get; set; } 
     }
 }

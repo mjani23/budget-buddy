@@ -13,34 +13,34 @@ public partial class BudgetPage : ContentPage
     {
         InitializeComponent();
         LoadIncome();
-        var budgetCategories = DatabaseHelper.LoadBudgetCategories();
+        LoadBudgetCategories();
         BudgetListView.ItemsSource = BudgetCategories;
     }
 
-	protected override void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
-        LoadIncome(); 
+        LoadIncome();
+        LoadBudgetCategories();
+    }
+
+    private void LoadIncome()
+    {
+        double savedTakeHomePay = DatabaseHelper.LoadTakeHomePay();
+        IncomeLabel.Text = $"Take-Home Pay: {savedTakeHomePay.ToString("C", new CultureInfo("en-US"))}";
+        MonthlyPayLabel.Text = $"Monthly Pay: {(savedTakeHomePay / 12).ToString("C", new CultureInfo("en-US"))}";
+    }
+
+    private void LoadBudgetCategories()
+    {
         BudgetCategories.Clear();
         foreach (var category in DatabaseHelper.LoadBudgetCategories())
         {
+            category.CanBeDeleted = category.Category != "Miscellaneous"; // Prevent deletion of Miscellaneous
             BudgetCategories.Add(category);
         }
     }
 
-    //loads takehome pay and monthly pay
-    private void LoadIncome()
-    {
-        double savedTakeHomePay = DatabaseHelper.LoadTakeHomePay();  // Load take-home pay
-
-        
-        // Format properly with CultureInfo
-        IncomeLabel.Text = $"Take-Home Pay: {savedTakeHomePay.ToString("C", new CultureInfo("en-US"))}";
-        MonthlyPayLabel.Text = $"Monthly Pay: {(savedTakeHomePay / 12).ToString("C", new CultureInfo("en-US"))}";
-    
-    }
-
-    //this adds a new budget category to the listview and database
     private void AddCategoryButton_Clicked(object sender, EventArgs e)
     {
         string categoryName = CategoryEntry.Text;
@@ -58,22 +58,22 @@ public partial class BudgetPage : ContentPage
             return;
         }
 
-        var newCategory = new BudgetCategory { Category = categoryName, Amount = budgetAmount };
-        BudgetCategories.Add(newCategory);
-        DatabaseHelper.SaveBudgetCategory(newCategory); // Save to DB
+        var existingCategory = BudgetCategories.FirstOrDefault(c => c.Category == categoryName);
+        if (existingCategory != null)
+        {
+            existingCategory.Amount = budgetAmount;  // Update the amount if category exists
+            DatabaseHelper.SaveBudgetCategory(existingCategory);
+        }
+        else
+        {
+            var newCategory = new BudgetCategory { Category = categoryName, Amount = budgetAmount };
+            BudgetCategories.Add(newCategory);
+            DatabaseHelper.SaveBudgetCategory(newCategory);
+        }
 
+        LoadBudgetCategories();
         CategoryEntry.Text = string.Empty;
         BudgetAmountEntry.Text = string.Empty;
-    }
-
-    private void LoadBudgetCategories()
-    {
-        BudgetCategories.Clear();
-        foreach (var category in DatabaseHelper.LoadBudgetCategories())
-        {
-            category.CanBeDeleted = category.Category != "Miscellaneous"; 
-            BudgetCategories.Add(category);
-        }
     }
 
     private void DeleteClicked(object sender, EventArgs e)
@@ -89,6 +89,4 @@ public partial class BudgetPage : ContentPage
             DisplayAlert("Error", "You cannot delete the 'Miscellaneous' category.", "OK");
         }
     }
-
-
 }
