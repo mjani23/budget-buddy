@@ -62,6 +62,54 @@ namespace FinanceFrenzy.Models
             }
         }
 
+        public static void SaveSaving(Saving saving)
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.CreateTable<Saving>();
+                db.Insert(saving);
+            }
+        }
+
+        public static List<Saving> LoadSavings()
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.CreateTable<Saving>();
+                return db.Table<Saving>().OrderByDescending(s => s.Date).ToList();
+            }
+        }
+
+        public static void DeleteSaving(Saving saving)
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.Delete(saving);
+            }
+        }
+
+        public static void SaveSavingsGoal(double percent)
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.CreateTable<SavingGoal>();
+                db.DeleteAll<SavingGoal>(); // Only one goal allowed
+                db.Insert(new SavingGoal { Percentage = percent });
+            }
+        }
+
+        public static double LoadSavingsGoal()
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.CreateTable<SavingGoal>();
+                return db.Table<SavingGoal>().FirstOrDefault()?.Percentage ?? 0;
+            }
+        }
+
+
+
+
 
 
         //adds a new budget category to the database or updates it if it already exists
