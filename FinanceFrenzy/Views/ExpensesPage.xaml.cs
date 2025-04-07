@@ -35,6 +35,7 @@ public partial class ExpensesPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        LoadIncome();
         LoadCategories(); 
         LoadExpenses();   
     }

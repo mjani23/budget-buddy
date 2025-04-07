@@ -20,6 +20,7 @@ public partial class BudgetPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+
         LoadIncome();
         LoadBudgetCategories();
     }

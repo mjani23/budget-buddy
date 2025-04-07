@@ -15,9 +15,6 @@ namespace FinanceFrenzy.Views
         public SavingsPage()
         {
             InitializeComponent();
-            LoadIncome();
-            LoadSavings();
-            LoadSavedGoal();
         }
 
         private void LoadIncome()
@@ -33,6 +30,15 @@ namespace FinanceFrenzy.Views
             savingsList = new ObservableCollection<Saving>(savings.OrderByDescending(s => s.Date));
             ContributionsListView.ItemsSource = savingsList;
             UpdateSavingsSummary();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LoadIncome();
+            LoadIncome();
+            LoadSavings();
+            LoadSavedGoal();
         }
 
         private void LoadSavedGoal()
