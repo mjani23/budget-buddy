@@ -5,12 +5,12 @@
              Title="Savings">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="20" Spacing="15">
 
             <!-- Display Income and Monthly -->
-            <Label x:Name="IncomeLabel" FontSize="18" FontAttributes="Bold"/>
+            <Label x:Name="IncomeLabel" FontSize="20" FontAttributes="Bold"/>
             <Label Text="Your Monthly Pay (Estimated)" FontSize="18"/>
-            <Label x:Name="MonthlyPayLabel" FontSize="18" FontAttributes="Bold"/>
+            <Label x:Name="MonthlyPayLabel" FontSize="20" FontAttributes="Bold"/>
 
             <!-- Percentage Input -->
             <Label Text="Enter Savings Percentage:" FontSize="18"/>
@@ -18,21 +18,19 @@
 
             <!-- Calculate Button -->
             <Button Text="Calculate Savings Goal"
-                    Clicked="CalculateSavingsGoal_Clicked"
-                    BackgroundColor="{StaticResource Secondary}"
-                    TextColor="{StaticResource Gray950}"/>
+                Clicked="CalculateSavingsGoal_Clicked"/>
 
             <!-- Goal Display -->
             <Label x:Name="RecommendedSavingsLabel"
-                   FontSize="18"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource PrimaryDarkText}"/>
+                FontSize="18"
+                FontAttributes="Bold"
+                TextColor="{StaticResource PrimaryDarkText}"/>
 
             <!-- Summary Display -->
             <Label x:Name="SavingsSummaryLabel"
-                   FontSize="16"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource PrimaryDarkText}"/>
+                FontSize="16"
+                FontAttributes="Bold"
+                TextColor="{StaticResource PrimaryDarkText}"/>
 
             <!-- Contribution Form -->
             <Label Text="Add a Savings Contribution" FontSize="18"/>
@@ -41,16 +39,14 @@
             <DatePicker x:Name="ContributionDatePicker" Format="MMMM dd, yyyy"/>
 
             <Button Text="Add Contribution"
-                    Clicked="AddContribution_Clicked"
-                    BackgroundColor="{StaticResource Secondary}"
-                    TextColor="{StaticResource Gray950}"/>
+                Clicked="AddContribution_Clicked"/>
 
             <!-- List of Contributions -->
             <Label Text="Current Savings:" FontSize="18" FontAttributes="Bold"/>
             <ListView x:Name="ContributionsListView"
-                      HasUnevenRows="True"
-                      SeparatorVisibility="None"
-                      BackgroundColor="Transparent">
+                HasUnevenRows="True"
+                SeparatorVisibility="None"
+                BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

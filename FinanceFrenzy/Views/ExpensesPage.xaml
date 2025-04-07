@@ -9,14 +9,13 @@
           ColumnDefinitions="*">
 
         <!-- Income Display -->
-        <StackLayout Grid.Row="0">
+        <StackLayout Grid.Row="0" Spacing="5" Padding="0, 0, 0, 10">
             <Label x:Name="IncomeLabel" FontSize="18" FontAttributes="Bold"/>
-            <Label Text="Your Monthly Pay (Estimated)" FontSize="18"/>
             <Label x:Name="MonthlyPayLabel" FontSize="18" FontAttributes="Bold"/>
         </StackLayout>
 
         <!-- Expense Entry Fields -->
-        <StackLayout Grid.Row="1" Spacing="5">
+        <StackLayout Grid.Row="1" Spacing="10" Padding="0, 0, 0, 10">
             <Label Text="Select an Expense Category:" FontSize="18"/>
             <Picker x:Name="CategoryPicker" Title="Select a category" TextColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
 

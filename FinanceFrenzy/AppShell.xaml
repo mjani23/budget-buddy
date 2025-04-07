@@ -26,10 +26,6 @@
         <ShellContent Route="income" ContentTemplate="{DataTemplate views:IncomePage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Take Home Pay" FlyoutIcon="home_pay.png" >
-        <ShellContent Route="takehomepay" ContentTemplate="{DataTemplate views:TakeHomePayPage}" />
-    </FlyoutItem>
-
     <FlyoutItem Title="Expenses" FlyoutIcon="expenses.png">
         <ShellContent Route="expenses" ContentTemplate="{DataTemplate views:ExpensesPage}" />
     </FlyoutItem>
@@ -46,8 +42,9 @@
         <ShellContent Route="reports" ContentTemplate="{DataTemplate views:ReportsPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Tax" FlyoutIcon="tax.png">
-        <ShellContent Route="tax" ContentTemplate="{DataTemplate views:TaxPage}" />
+
+    <FlyoutItem Title="Settings" FlyoutIcon="settings.png">
+        <ShellContent Route="settings" ContentTemplate="{DataTemplate views:Settings}" />
     </FlyoutItem>
 
 </Shell>
