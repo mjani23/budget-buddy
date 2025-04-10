@@ -5,7 +5,7 @@
              Title="Expenses">
 
     <Grid Padding="10"
-          RowDefinitions="Auto, Auto, *, Auto"
+          RowDefinitions="Auto, Auto, Auto, *, Auto"
           ColumnDefinitions="*">
 
         <!-- Income Display -->
@@ -14,65 +14,58 @@
             <Label x:Name="MonthlyPayLabel" FontSize="18" FontAttributes="Bold"/>
         </StackLayout>
 
+        <!-- Buttons -->
+        <HorizontalStackLayout Grid.Row="1" Spacing="10" Padding="0,0,0,10">
+            <Button Text="New Month" Clicked="NewMonthButton_Clicked" BackgroundColor="DarkRed" TextColor="White"/>
+            <Button Text="Export" Clicked="ExportButton_Clicked" BackgroundColor="DarkGreen" TextColor="White"/>
+        </HorizontalStackLayout>
+
         <!-- Expense Entry Fields -->
-        <StackLayout Grid.Row="1" Spacing="10" Padding="0, 0, 0, 10">
+        <StackLayout Grid.Row="2" Spacing="10" Padding="0, 0, 0, 10">
             <Label Text="Select an Expense Category:" FontSize="18"/>
-            <Picker x:Name="CategoryPicker" Title="Select a category" TextColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
+            <Picker x:Name="CategoryPicker" Title="Select a category" />
 
             <Label Text="Expense Amount:" FontSize="18"/>
-            <Entry x:Name="ExpenseAmountEntry" Placeholder="Enter amount" Keyboard="Numeric" PlaceholderColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
+            <Entry x:Name="ExpenseAmountEntry" Placeholder="Enter amount" Keyboard="Numeric"/>
 
             <Label Text="Optional Tag:" FontSize="18"/>
-            <Entry x:Name="ExpenseTagEntry" Placeholder="Enter tag (optional)" PlaceholderColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}"/>
+            <Entry x:Name="ExpenseTagEntry" Placeholder="Enter tag (optional)"/>
 
             <Label Text="Select Expense Date:" FontSize="18"/>
-            <DatePicker x:Name="ExpenseDatePicker" Format="MMMM dd, yyyy" TextColor="{StaticResource Gray200}"/>
+            <DatePicker x:Name="ExpenseDatePicker" Format="MMMM dd, yyyy"/>
 
-            <Button Text="Add Expense" x:Name="expenseAdd" Clicked="expenseAdd_Clicked" TextColor="{StaticResource Gray200}"/>
+            <Button Text="Add Expense" x:Name="expenseAdd" Clicked="expenseAdd_Clicked"/>
         </StackLayout>
 
         <!-- Expenses Grouped By Category -->
         <ListView x:Name="ExpensesListView"
-                  Grid.Row="2"
+                  Grid.Row="3"
                   BackgroundColor="Transparent"
                   Margin="0,10,0,0"
                   IsGroupingEnabled="True"
                   GroupDisplayBinding="{Binding Category}"
                   SeparatorVisibility="None">
 
-            <!-- Category Header (Total + Remaining Budget) -->
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="4, 2" BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}" Orientation="Horizontal" Spacing="10">
-                            <Label Text="{Binding Category}" FontSize="20" FontAttributes="Bold" TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}"/>
-                            <Label Text="{Binding TotalAmount, StringFormat='(Total: ${0:N2})'}"
-                                   FontSize="16"
-                                   TextColor="Green"/>
-                            <Label Text="{Binding RemainingBudget, StringFormat='(Remaining: ${0:N2})'}"
-                                   FontSize="16"
-                                   TextColor="Red"/>
+                        <StackLayout Padding="4, 2" Orientation="Horizontal" Spacing="10">
+                            <Label Text="{Binding Category}" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="{Binding TotalAmount, StringFormat='(Total: ${0:N2})'}" FontSize="16" TextColor="Green"/>
+                            <Label Text="{Binding RemainingBudget, StringFormat='(Remaining: ${0:N2})'}" FontSize="16" TextColor="Red"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.GroupHeaderTemplate>
 
-            <!-- Expense Item -->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10" Orientation="Horizontal" Spacing="10" Background="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
-                            <!-- Expense Amount -->
+                        <StackLayout Padding="10" Orientation="Horizontal" Spacing="10">
                             <Label Text="{Binding Amount, StringFormat='${0:N2}'}" FontSize="16" FontAttributes="Bold"/>
-
-                            <!-- Expense Date -->
-                            <Label Text="{Binding Date, StringFormat='({0:MMMM dd, yyyy})'}" FontSize="14" TextColor="{StaticResource Gray500}"/>
-
-                            <!-- Separator (Only if tag exists) -->
-                            <Label Text=" - " FontSize="16" TextColor="{StaticResource Gray500}" IsVisible="{Binding HasTag}"/>
-
-                            <!-- Tag (if exists) -->
-                            <Label Text="{Binding Tag}" FontSize="14" TextColor="{StaticResource Gray500}" FontAttributes="Italic" IsVisible="{Binding HasTag}"/>
+                            <Label Text="{Binding Date, StringFormat='({0:MMMM dd, yyyy})'}" FontSize="14"/>
+                            <Label Text=" - " FontSize="16" IsVisible="{Binding HasTag}"/>
+                            <Label Text="{Binding Tag}" FontSize="14" FontAttributes="Italic" IsVisible="{Binding HasTag}"/>
                         </StackLayout>
 
                         <ViewCell.ContextActions>

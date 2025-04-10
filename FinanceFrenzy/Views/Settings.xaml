@@ -4,16 +4,19 @@
              x:Class="FinanceFrenzy.Views.Settings"
              Title="Settings">
     <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
-        <Label 
-            Text="Settings Page" 
-            HorizontalOptions="Center" 
-            />
+        <Label Text="Settings" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold"/>
+
+        <!-- Theme Toggle -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+            <Label Text="Dark Mode" VerticalOptions="Center"/>
+            <Switch x:Name="DarkModeSwitch" Toggled="DarkModeSwitch_Toggled"/>
+        </StackLayout>
+
         <Button 
-            Text="Dashboard" 
-            HorizontalOptions="Center" 
+            Text="Back to Dashboard" 
+            HorizontalOptions="Center"
             x:Name="btnGoBack"
-            Clicked="btnGoBack_Clicked"
-            />
-            
+            Clicked="btnGoBack_Clicked"/>
     </VerticalStackLayout>
+
 </ContentPage>

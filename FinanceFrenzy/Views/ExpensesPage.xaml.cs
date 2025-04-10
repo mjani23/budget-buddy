@@ -1,12 +1,15 @@
 using Microsoft.Maui.Controls;
-using System.Globalization;
+using Microsoft.Maui.Storage;
+using Microsoft.Maui.ApplicationModel.Communication;
+using Microsoft.Maui.ApplicationModel.DataTransfer;
 using FinanceFrenzy.Models;
+using System.Globalization;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace FinanceFrenzy.Views;
 
-// Represents a group of expenses under a single category
 public class ExpenseGroup : ObservableCollection<Expense>
 {
     public string Category { get; set; }
@@ -53,7 +56,6 @@ public partial class ExpensesPage : ContentPage
             .Select(b => b.Category)
             .ToList();
 
-        CategoryPicker.ItemsSource = null; 
         CategoryPicker.ItemsSource = ExistingCategories;
     }
 
@@ -79,50 +81,108 @@ public partial class ExpensesPage : ContentPage
         ExpensesListView.ItemsSource = ExpensesGrouped;
     }
 
-private void expenseAdd_Clicked(object sender, EventArgs e)
-{
-    if (CategoryPicker.SelectedItem == null)
+    private void expenseAdd_Clicked(object sender, EventArgs e)
     {
-        DisplayAlert("Error", "Please select a category.", "OK");
-        return;
+        if (CategoryPicker.SelectedItem == null)
+        {
+            DisplayAlert("Error", "Please select a category.", "OK");
+            return;
+        }
+
+        string? category = CategoryPicker.SelectedItem.ToString();
+        string amountText = ExpenseAmountEntry.Text;
+        string tag = ExpenseTagEntry.Text;
+        DateTime date = ExpenseDatePicker.Date;
+
+        if (!double.TryParse(amountText, out double amount))
+        {
+            DisplayAlert("Error", "Please enter a valid numeric amount.", "OK");
+            return;
+        }
+
+        var newExpense = new Expense
+        {
+            Category = category,
+            Amount = amount,
+            Tag = tag,
+            Date = date
+        };
+
+        DatabaseHelper.SaveExpense(newExpense);
+        LoadExpenses();
+
+        ExpenseAmountEntry.Text = "";
+        ExpenseTagEntry.Text = "";
     }
-
-    string? categoryToUse = CategoryPicker.SelectedItem.ToString();
-    string expenseAmountText = ExpenseAmountEntry.Text;
-    string tag = ExpenseTagEntry.Text;
-    DateTime selectedDate = ExpenseDatePicker.Date;
-
-    if (!double.TryParse(expenseAmountText, out double expenseAmount))
-    {
-        DisplayAlert("Error", "Please enter a valid numeric amount.", "OK");
-        return;
-    }
-
-    var newExpense = new Expense 
-    { 
-        Category = categoryToUse, 
-        Amount = expenseAmount, 
-        Tag = tag,
-        Date = selectedDate
-    };
-
-    DatabaseHelper.SaveExpense(newExpense);
-    LoadExpenses();
-
-    ExpenseAmountEntry.Text = string.Empty;
-    ExpenseTagEntry.Text = string.Empty;
-}
-
 
     private void DeleteExpense_Clicked(object sender, EventArgs e)
     {
-        var menuItem = sender as MenuItem;
-        var expense = menuItem?.CommandParameter as Expense;
-
-        if (expense != null)
+        if (sender is MenuItem menuItem && menuItem.CommandParameter is Expense expense)
         {
             DatabaseHelper.DeleteExpense(expense);
             LoadExpenses();
         }
+    }
+
+    private async void NewMonthButton_Clicked(object sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert("Clear All Expenses", "Are you sure you want to clear all current expenses?", "Yes", "Cancel");
+        if (confirm)
+        {
+            DatabaseHelper.DeleteAllExpenses();
+            LoadExpenses();
+        }
+    }
+
+    private async void ExportButton_Clicked(object sender, EventArgs e)
+    {
+        var expenses = DatabaseHelper.LoadExpenses();
+        string reportPath = Path.Combine(FileSystem.AppDataDirectory, "MonthlyExpensesReport.txt");
+
+        var lines = new List<string>
+        {
+            "Monthly Expenses Report",
+            $"Generated on: {DateTime.Now:MMMM dd, yyyy hh:mm tt}",
+            "",
+            "Category      | Amount   | Date       | Tag",
+            "---------------------------------------------"
+        };
+
+        foreach (var exp in expenses)
+        {
+            lines.Add($"{exp.Category,-13} ${exp.Amount,8:F2} {exp.Date:yyyy-MM-dd}   {exp.Tag}");
+        }
+
+        File.WriteAllLines(reportPath, lines);
+
+#if WINDOWS || MACCATALYST
+        string email = await DisplayPromptAsync("Send Report", "Enter email address to send the report to:");
+        if (!string.IsNullOrWhiteSpace(email))
+        {
+            var message = new EmailMessage
+            {
+                Subject = "Your Monthly Expense Report",
+                Body = "Attached is your monthly expense report.",
+                To = new List<string> { email }
+            };
+
+            message.Attachments.Add(new EmailAttachment(reportPath));
+
+            try
+            {
+                await Email.Default.ComposeAsync(message);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Unable to send email: {ex.Message}", "OK");
+            }
+        }
+#else
+        await Share.Default.RequestAsync(new ShareFileRequest
+        {
+            Title = "Share Monthly Expense Report",
+            File = new ShareFile(reportPath)
+        });
+#endif
     }
 }

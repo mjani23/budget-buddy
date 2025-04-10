@@ -50,6 +50,16 @@ namespace FinanceFrenzy.Models
             }
         }
 
+        public static void DeleteAllExpenses()
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.CreateTable<Expense>();
+                db.DeleteAll<Expense>();
+            }
+        }
+
+
 
 
         //delete an expense from the database
