@@ -3,20 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FinanceFrenzy.Views.Settings"
              Title="Settings">
-    <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
-        <Label Text="Settings" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold"/>
 
-        <!-- Theme Toggle -->
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
-            <Label Text="Dark Mode" VerticalOptions="Center"/>
-            <Switch x:Name="DarkModeSwitch" Toggled="DarkModeSwitch_Toggled"/>
-        </StackLayout>
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30">
 
-        <Button 
-            Text="Back to Dashboard" 
-            HorizontalOptions="Center"
-            x:Name="btnGoBack"
-            Clicked="btnGoBack_Clicked"/>
-    </VerticalStackLayout>
+            <Label Text="Settings" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
 
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                <Label Text="Dark Mode" VerticalOptions="Center"/>
+                <Switch x:Name="DarkModeSwitch" Toggled="DarkModeSwitch_Toggled"/>
+            </StackLayout>
+
+            <Button Text="Export All Data" Clicked="ExportAllButton_Clicked" BackgroundColor="DarkGreen" TextColor="White"/>
+            <Button Text="Clear All Data" Clicked="ClearAllButton_Clicked" BackgroundColor="DarkRed" TextColor="White"/>
+            <Button Text="Back to Dashboard" Clicked="btnGoBack_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

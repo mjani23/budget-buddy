@@ -50,6 +50,25 @@ namespace FinanceFrenzy.Models
             }
         }
 
+        public static void DeleteAllSavings()
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.CreateTable<Saving>();
+                db.DeleteAll<Saving>();
+            }
+        }
+
+        public static void DeleteAllBudgets()
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                db.CreateTable<BudgetCategory>();
+                db.DeleteAll<BudgetCategory>();
+            }
+}
+
+
         public static void DeleteAllExpenses()
         {
             using (var db = new SQLiteConnection(dbPath))
