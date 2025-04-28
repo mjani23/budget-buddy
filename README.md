@@ -41,4 +41,9 @@ Some UI and accessibility improvements remain under consideration.
 1.	Open the project with .NET MAUI workloads installed  
 2.	Clone the repository  
 3.  Open the FinanceFrenzy.sln file in Visual Studio  
-4.  Build and Run  
+4.  Build and Run
+
+**Photos**      
+<img src="https://github.com/user-attachments/assets/2abfb461-df03-49b8-a6cf-73f471ef7d5d" width="300"/>
+<img src="https://github.com/user-attachments/assets/8e0dee47-47e2-44e5-a3c3-6d8eda9931c5"  width="300"/>
+<img src="https://github.com/user-attachments/assets/c65e438a-9f9a-48c9-83ea-84f123019586" width="300"/>
